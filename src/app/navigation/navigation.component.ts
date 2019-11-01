@@ -11,9 +11,7 @@ export class NavigationComponent implements OnInit {
   //constructor() {}
   navbarOpen: boolean = false;
 
-
   constructor(public authService: AuthService) { }
-
 
   ngOnInit() {
   }
