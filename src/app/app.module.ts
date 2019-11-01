@@ -9,6 +9,7 @@ import { Sample2Component } from './sample2/sample2.component';
 import { Sample3Component } from './sample3/sample3.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
+import { LoginComponent } from './core/login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
     Sample2Component,
     Sample3Component,
     HomeComponent,
-     NotFoundComponent
+     NotFoundComponent,
+     LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { Sample1Component } from './sample1/sample1.component';
 import { Sample2Component } from './sample2/sample2.component';
 import { Sample3Component } from './sample3/sample3.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
+import { LoginComponent } from './core/login/login.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'sample1', component: Sample1Component},
   {path: 'sample2', component: Sample2Component},
   {path: 'sample3', component: Sample3Component },
+  {path: 'login', component: LoginComponent},
   {path: '**', component: NotFoundComponent, pathMatch: 'full'} // this needs to be last
 ];
 
