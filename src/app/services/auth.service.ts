@@ -19,6 +19,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
+  private tempLogin: boolean = false;
+
   // private user$: Observable<firebase.User>;
   // private userDetails: firebase.User; 
 
@@ -32,49 +34,66 @@ export class AuthService {
   //   )
   // }
 
-  constructor (){
+  constructor() {
 
   }
 
-  Login(email: string, password: string) {
-    // return new Promise<any>((resolve, reject) => {
-    //   this.firebaseAuth
-    //     .auth
-    //     .signInWithEmailAndPassword(email, password)
-    //     .then(value => {
-    //       console.log('Nice, firestore auth worked!');
-    //       resolve(value);
-    //     })
-    //     .catch(err => {
-    //       console.log('firestore auth didn\'t work:', err.message);
-    //       //note we have chosen not to pass too much information about failure here
-    //       reject('login failed');
-    //     });
-    // })
+  Login(email: string, password: string): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      if (password === "password") {
+        this.tempLogin = true;
+        resolve(true)
+      }
+      else {
+        reject('worng password')
+      }
+      //   this.firebaseAuth
+      //     .auth
+      //     .signInWithEmailAndPassword(email, password)
+      //     .then(value => {
+      //       console.log('Nice, firestore auth worked!');
+      //       resolve(value);
+      //     })
+      //     .catch(err => {
+      //       console.log('firestore auth didn\'t work:', err.message);
+      //       //note we have chosen not to pass too much information about failure here
+      //       reject('login failed');
+      //     });
+    })
   }
 
 
 
-  SignUp(email: string, password: string) {
-    // return new Promise<any>((resolve, reject) => {
-    //   firebase.auth().createUserWithEmailAndPassword(email, password)
-    //     .then(res => {
-    //       resolve(res);
-    //     })
-    //     .catch( err => reject(err.message))
-    // })
+  SignUp(email: string, password: string): Promise<any> {
+
+    return new Promise<any>((resolve, reject) => {
+      if (password === "password") {
+        this.tempLogin = true;
+        resolve(true)
+      }
+      else {
+        reject('passord is too hard to guess try password')
+      }
+    })
   }
+
+  // return new Promise<any>((resolve, reject) => {
+  //   firebase.auth().createUserWithEmailAndPassword(email, password)
+  //     .then(res => {
+  //       resolve(res);
+  //     })
+  //     .catch( err => reject(err.message))
+  // })
+
 
   Logout() {
-    // this.firebaseAuth
-    //   .auth
-    //   .signOut();
+    this.tempLogin = false;
   }
 
 
   IsLoggedIn(): boolean {
-    return false;
-   // return this.userDetails != null;
+    return this.tempLogin;
+    // return this.userDetails != null;
   }
 
   GetDisplayName(): string {
