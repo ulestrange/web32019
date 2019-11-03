@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() {}
+  constructor(private router: Router)) {}
   navbarOpen: boolean = false;
 
   ngOnInit() {
@@ -17,9 +18,10 @@ export class NavigationComponent implements OnInit {
     this.navbarOpen = !this.navbarOpen;
   }
 
-  // public logout(){
-  //   this.authService.Logout();
-  // }
+  public logout(){
+   this.authService.Logout();
+       this.router.navigate(['']);  
+  }
 
 }
 
