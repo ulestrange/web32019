@@ -44,6 +44,7 @@ export class AuthService {
 
 
   Logout() {
+    console.log('here');
     this.tempLogin = false;
   }
 

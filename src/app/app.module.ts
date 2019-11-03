@@ -10,6 +10,8 @@ import { Sample3Component } from './sample3/sample3.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { LoginComponent } from './core/login/login.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RegisterComponent } from './core/register/register.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,14 @@ import { LoginComponent } from './core/login/login.component';
     Sample3Component,
     HomeComponent,
      NotFoundComponent,
-     LoginComponent
+     LoginComponent,
+     RegisterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

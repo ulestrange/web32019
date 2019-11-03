@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { EmailValidator } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   public User$;
   public message : string;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private router: Router ) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     this.authService.Login(email, password)
     .then(resolve => {
       console.log("success loggin in");
+      this.router.navigate(['/Home']);
     }, 
     (err =>{
       console.log(err);
