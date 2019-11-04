@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor(private router: Router)) {}
+  constructor(private router: Router) { }
   navbarOpen: boolean = false;
 
   ngOnInit() {
@@ -18,9 +18,9 @@ export class NavigationComponent implements OnInit {
     this.navbarOpen = !this.navbarOpen;
   }
 
-  public logout(){
-   this.authService.Logout();
-       this.router.navigate(['']);  
+  public logout() {
+    // this.authService.Logout();
+    // this.router.navigate(['']);
   }
 
 }
