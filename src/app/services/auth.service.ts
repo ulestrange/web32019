@@ -7,22 +7,20 @@ export class AuthService {
 
   private tempLogin: boolean = false;
 
-  
+
   constructor() {
 
   }
 
   Login(email: string, password: string): Promise<any> {
     return new Promise<any>((resolve, reject) => {
-      if (password === "password") {
+      if (password === 'password') {
         this.tempLogin = true;
-        resolve(true)
-      }
-      else {
+        resolve(true);
+      } else {
         reject('worng password')
       }
-
-    })
+    });
   }
 
 

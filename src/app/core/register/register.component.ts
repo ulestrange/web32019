@@ -42,8 +42,8 @@ export class RegisterComponent implements OnInit {
     this.authService.SignUp(this.email.value, this.password.value)
       .then(res => {
         console.log(res);
-        this.errorMessage = "";
-        this.successMessage = "Your account has been created";
+        this.errorMessage = '';
+        this.successMessage = 'Your account has been created';
       }, err => {
         console.log(err);
         this.errorMessage = err;
