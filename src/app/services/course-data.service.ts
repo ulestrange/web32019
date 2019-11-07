@@ -15,7 +15,6 @@ export class CourseDataService {
 
   constructor(private afs: AngularFirestore) {
     this.courseCollection = afs.collection<Course>('courses');
-    this.addCourseToDatabase({name: 'Angular'});
   }
 
    getCourses(): Observable<Course[]> {

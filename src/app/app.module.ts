@@ -21,6 +21,7 @@ import { environment } from 'src/environments/environment';
 import { CourseListComponent } from './course/course-list/course-list.component';
 import { CourseRowComponent } from './course/course-row/course-row.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { CourseDetailsComponent } from './course/course-details/course-details.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
      LoginComponent,
      RegisterComponent,
      CourseListComponent,
-     CourseRowComponent
+     CourseRowComponent,
+     CourseDetailsComponent
   ],
   imports: [
     BrowserModule,

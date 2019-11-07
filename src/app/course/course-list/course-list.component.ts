@@ -15,7 +15,7 @@ export class CourseListComponent implements OnInit {
 
 
 
-  private currentCourse: Course;
+  currentCourse: Course;
 
   constructor(private courseDataService: CourseDataService) {
   }
@@ -34,7 +34,7 @@ export class CourseListComponent implements OnInit {
 
   clicked(course: Course): void {
     this.currentCourse = course;
-    
+
   }
 
   isSelected(course: Course): boolean {
