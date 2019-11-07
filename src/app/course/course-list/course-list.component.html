@@ -1,0 +1,20 @@
+<div class="container-fluid">
+
+  <div >
+    <app-course-row class="card" 
+   
+      *ngFor="let c of courseList" 
+    
+      [course]="c"
+      (click)='clicked(c)'
+      [class.bg-info]="isSelected(c)"
+      [class.text-white]="isSelected(c)" >
+  
+    </app-course-row>
+  
+    <!-- <app-course-details  *ngIf="!!currentCourse" [course]="currentCourse" >
+  
+      </app-course-details> -->
+  </div>
+  
+  </div>

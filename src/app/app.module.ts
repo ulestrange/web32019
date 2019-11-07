@@ -18,6 +18,9 @@ import { LoginComponent } from './core/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RegisterComponent } from './core/register/register.component';
 import { environment } from 'src/environments/environment';
+import { CourseListComponent } from './course/course-list/course-list.component';
+import { CourseRowComponent } from './course/course-row/course-row.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { environment } from 'src/environments/environment';
     HomeComponent,
      NotFoundComponent,
      LoginComponent,
-     RegisterComponent
+     RegisterComponent,
+     CourseListComponent,
+     CourseRowComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ import { environment } from 'src/environments/environment';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

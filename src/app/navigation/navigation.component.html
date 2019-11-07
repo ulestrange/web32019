@@ -22,6 +22,8 @@
                 </a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/sample2" (click)="toggleNavbar()">Sample2
                 </a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/courseList" (click)="toggleNavbar()">List Courses
+                </a></li>
             <li *ngIf="(authService.IsLoggedIn())" class="nav-item">
                 <a class="nav-link" routerLink="/sample3" (click)="toggleNavbar()">Sample3</a>
             </li>
