@@ -39,16 +39,10 @@ export class AuthService {
           //note we have chosen not to pass too much information about failure here
           reject('login failed');
         });
-    })
-
-
-  constructor (){
-
+    });
   }
 
-  Login(email: string, password: string) {
-    
-  }
+
 
 
 
