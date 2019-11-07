@@ -2,6 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+
+
+import { AngularFireModule} from '@angular/fire';
+import { AngularFireAuthModule} from '@angular/fire/auth';
+
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { Sample1Component } from './sample1/sample1.component';
@@ -12,6 +17,7 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 import { LoginComponent } from './core/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RegisterComponent } from './core/register/register.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,9 @@ import { RegisterComponent } from './core/register/register.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

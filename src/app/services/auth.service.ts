@@ -1,59 +1,69 @@
 import { Injectable } from '@angular/core';
 
+import { AngularFireAuth } from '@angular/fire/auth';
+
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private tempLogin: boolean = false;
+  private user$: Observable<firebase.User>;
+  private userDetails: firebase.User;
 
 
-  constructor() {
-
+  constructor(private firebaseAuth: AngularFireAuth) {
+    this.user$ = firebaseAuth.authState;
+    this.user$.subscribe(
+      (user) => {
+      this.userDetails = user;
+      }
+    )
   }
 
-  Login(email: string, password: string): Promise<any> {
+  Login(email: string, password: string) {
     return new Promise<any>((resolve, reject) => {
-      if (password === 'password') {
-        this.tempLogin = true;
-        resolve(true);
-      } else {
-        reject('worng password')
-      }
-    });
-  }
-
-
-
-  SignUp(email: string, password: string): Promise<any> {
-
-    return new Promise<any>((resolve, reject) => {
-      if (password === "password") {
-        this.tempLogin = true;
-        resolve(true)
-      }
-      else {
-        reject('passord is too hard to guess try password')
-      }
+      this.firebaseAuth
+        .auth
+        .signInWithEmailAndPassword(email, password)
+        .then(value => {
+          console.log('Nice, firestore auth worked!');
+          resolve(value);
+        })
+        .catch(err => {
+          console.log('firestore auth didn\'t work:', err.message);
+          //note we have chosen not to pass too much information about failure here
+          reject('login failed');
+        });
     })
   }
 
 
 
+   SignUp(email: string, password: string) {
+    return new Promise<any>((resolve, reject) => {
+      this.firebaseAuth.auth.createUserWithEmailAndPassword(email, password)
+        .then(res => {
+          resolve(res);
+        })
+        .catch( err => reject(err.message))
+    });
+  }
+
 
   Logout() {
-    console.log('here');
-    this.tempLogin = false;
+    this.firebaseAuth
+      .auth
+      .signOut();
   }
 
 
   IsLoggedIn(): boolean {
-    return this.tempLogin;
-
+    return this.userDetails != null;
   }
 
   GetDisplayName(): string {
-    return 'una';
-
+    return this.userDetails ? this.userDetails.email : '';
   }
 }
