@@ -27,9 +27,9 @@
             </li>
         </ul>
 
-        <!-- The login and register-->
-
-        <a class="nav-link" *ngIf="!(authService.IsLoggedIn())" routerLink="/register">Register Here</a>
+<!-- The login and register-->
+  
+      <a class="nav-link" *ngIf="!(authService.IsLoggedIn())" routerLink="/register">Register Here</a>
 
         <a class="nav-link" *ngIf="!(authService.IsLoggedIn())" routerLink="/login">Login Here</a>
 
