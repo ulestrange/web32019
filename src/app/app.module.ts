@@ -22,6 +22,8 @@ import { CourseListComponent } from './course/course-list/course-list.component'
 import { CourseRowComponent } from './course/course-row/course-row.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { CourseDetailsComponent } from './course/course-details/course-details.component';
+import { EditCourseComponent } from './course/edit-course/edit-course.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { CourseDetailsComponent } from './course/course-details/course-details.c
      RegisterComponent,
      CourseListComponent,
      CourseRowComponent,
-     CourseDetailsComponent
+     CourseDetailsComponent,
+     EditCourseComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,8 @@ import { CourseDetailsComponent } from './course/course-details/course-details.c
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
