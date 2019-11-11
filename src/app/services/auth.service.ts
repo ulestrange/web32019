@@ -20,7 +20,7 @@ export class AuthService {
     this.user$ = firebaseAuth.authState;
     this.user$.subscribe(
       (user) => {
-      this.userDetails = user;
+        this.userDetails = user;
       }
     )
   }
@@ -39,26 +39,20 @@ export class AuthService {
           //note we have chosen not to pass too much information about failure here
           reject('login failed');
         });
-    })
-
-
-  constructor (){
-
-  }
-
-  Login(email: string, password: string) {
-    
+    });
   }
 
 
 
-   SignUp(email: string, password: string) {
+
+
+  SignUp(email: string, password: string) {
     return new Promise<any>((resolve, reject) => {
       this.firebaseAuth.auth.createUserWithEmailAndPassword(email, password)
         .then(res => {
           resolve(res);
         })
-        .catch( err => reject(err.message))
+        .catch(err => reject(err.message))
     });
   }
 
