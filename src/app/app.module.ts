@@ -53,6 +53,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ EditCourseComponent ]  // needed because the component is not included in a template
 })
 export class AppModule { }

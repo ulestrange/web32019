@@ -56,6 +56,7 @@ export class CourseListComponent implements OnInit {
     modalRef.result.then(
       (result) => {
         console.log("emitting", result);
+        this.courseDataService.addCourseToDatabase(result);
         // this.personSubmitted.emit(result);
         this.closeResult = `Closed with: ${result}`;
       },
