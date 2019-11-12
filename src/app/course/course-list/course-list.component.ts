@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Course } from '../../model/course';
+import { Course, CourseID } from '../../model/course';
 import { CourseDataService } from 'src/app/services/course-data.service';
 
 import { NgbModal, NgbActiveModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 import { EditCourseComponent } from '../edit-course/edit-course.component';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-course-list',
@@ -14,12 +15,12 @@ import { EditCourseComponent } from '../edit-course/edit-course.component';
 export class CourseListComponent implements OnInit {
 
 
-  courseList: Course[];
+  courseList: CourseID[];
   closeResult: string;
 
 
 
-  currentCourse: Course;
+  currentCourse: CourseID;
 
   constructor(private courseDataService: CourseDataService, private modalService: NgbModal) {
   }
@@ -28,20 +29,24 @@ export class CourseListComponent implements OnInit {
   ngOnInit() {
 
     this.courseDataService.getCourses().subscribe({
-      next: (value: Course[]) => {
+      next: (value: CourseID[]) => {
         this.courseList = value;
       },
       complete: () => { console.log('all done'); }
     });
+
+
+
+
   }
 
 
-  clicked(course: Course): void {
+  clicked(course: CourseID): void {
     this.currentCourse = course;
 
   }
 
-  isSelected(course: Course): boolean {
+  isSelected(course: CourseID): boolean {
     if (!course || !this.currentCourse) {
       return false;
     }
@@ -55,10 +60,9 @@ export class CourseListComponent implements OnInit {
 
     modalRef.result.then(
       (result) => {
-        console.log("emitting", result);
-        this.courseDataService.addCourseToDatabase(result);
-        // this.personSubmitted.emit(result);
-        this.closeResult = `Closed with: ${result}`;
+        console.log(' upating ', this.currentCourse.id);
+        this.courseDataService.updateCourse(this.currentCourse.id  , result);
+        this.closeResult = `Closed with: success`;
       },
       (reason) => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

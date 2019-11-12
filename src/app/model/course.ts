@@ -4,4 +4,7 @@ export interface Course {
     categories: string[];
     description: string;
     imageURL: string;
+    testChange: boolean;
 }
+
+export interface CourseID extends Course {id: string}
