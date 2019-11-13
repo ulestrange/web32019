@@ -15,8 +15,6 @@ export class EditCourseComponent implements OnInit {
 
   @Input() course: Course;
 
-
-
   mainForm: FormGroup;
   closeResult: string;
   activeModal: NgbActiveModal;

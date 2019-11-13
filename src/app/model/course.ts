@@ -1,4 +1,5 @@
 export interface Course {
+    id: string
     name: string;
     price: number;
     categories: string[];
@@ -7,4 +8,4 @@ export interface Course {
     testChange: boolean;
 }
 
-export interface CourseID extends Course {id: string}
+

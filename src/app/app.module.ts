@@ -24,6 +24,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { CourseDetailsComponent } from './course/course-details/course-details.component';
 import { EditCourseComponent } from './course/edit-course/edit-course.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddCourseComponent } from './course/add-course/add-course.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
      CourseRowComponent,
      CourseDetailsComponent,
      EditCourseComponent,
+     AddCourseComponent,
 
   ],
   imports: [

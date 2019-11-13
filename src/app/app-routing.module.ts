@@ -9,6 +9,7 @@ import { LoginComponent } from './core/login/login.component';
 import { RegisterComponent } from './core/register/register.component';
 import { AuthGuard } from './core/auth.guard';
 import { CourseListComponent } from './course/course-list/course-list.component';
+import { AddCourseComponent } from './course/add-course/add-course.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'sample2', component: Sample2Component},
   {path: 'sample3', component: Sample3Component, canActivate: [AuthGuard] },
   {path: 'courseList', component: CourseListComponent},
+  {path: 'addCourse', component: AddCourseComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: '**', component: NotFoundComponent, pathMatch: 'full'} // this needs to be last

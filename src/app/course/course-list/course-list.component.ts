@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Course, CourseID } from '../../model/course';
+import { Course} from '../../model/course';
 import { CourseDataService } from 'src/app/services/course-data.service';
 
 import { NgbModal, NgbActiveModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -15,12 +15,12 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
 export class CourseListComponent implements OnInit {
 
 
-  courseList: CourseID[];
+  courseList: Course[];
   closeResult: string;
 
 
 
-  currentCourse: CourseID;
+  currentCourse: Course;
 
   constructor(private courseDataService: CourseDataService, private modalService: NgbModal) {
   }
@@ -29,7 +29,7 @@ export class CourseListComponent implements OnInit {
   ngOnInit() {
 
     this.courseDataService.getCourses().subscribe({
-      next: (value: CourseID[]) => {
+      next: (value: Course[]) => {
         this.courseList = value;
       },
       complete: () => { console.log('all done'); }
@@ -41,21 +41,22 @@ export class CourseListComponent implements OnInit {
   }
 
 
-  clicked(course: CourseID): void {
+  clicked(course: Course): void {
     this.currentCourse = course;
 
   }
 
-  isSelected(course: CourseID): boolean {
+  isSelected(course: Course): boolean {
     if (!course || !this.currentCourse) {
       return false;
     }
-    return course.name === this.currentCourse.name;
+    return course.id === this.currentCourse.id;
   }
 
   // open the modal form, the form itself is a component
   open() {
     const modalRef = this.modalService.open(EditCourseComponent);
+    console.log( this.currentCourse);
     modalRef.componentInstance.course = this.currentCourse;
 
     modalRef.result.then(
