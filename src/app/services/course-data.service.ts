@@ -29,7 +29,7 @@ export class CourseDataService {
       this.courseCollection.snapshotChanges().pipe(
         map(actions => {
           return (actions.map(a => {
-            console.log (a.payload.doc.data())
+          
             return ({ id: a.payload.doc.id, ...a.payload.doc.data() } as Course)
           }
           ))
@@ -40,7 +40,7 @@ export class CourseDataService {
 
 
 
-  addCourseToDatabase(course: Course) {
+  addCourse(course: Course) {
     this.courseCollection.add({ ...course });
   }
 

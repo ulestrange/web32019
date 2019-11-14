@@ -1,7 +1,7 @@
-<p>
-  edit-course works!
-</p>
-
+<h2>
+  <div *ngIf="!newCourse" > Editing a course</div>
+  <div *ngIf="newCourse" > Adding a course</div>
+</h2>
 <div class="modal-header">
   <h4 class="modal-title" id="modal-basic-title">Edit Details</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
@@ -49,14 +49,15 @@
           </label>
         </div>
 
-        <!-- The button for adding another interest -->
+        <!-- The button for adding another category -->
         <button class="btn btn-sm" type="button" (click)="addCategory()">+ Category</button>
       </div>
 
     </fieldset>
   
     <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" >Save Edits</button>
+      <button *ngIf="!newCourse" type="submit" class="btn btn-primary" >Save Edits</button>
+      <button *ngIf="newCourse" type="submit" class="btn btn-primary" >Save New Course</button>
     </div>
 
   </form>

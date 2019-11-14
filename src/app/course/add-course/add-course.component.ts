@@ -41,4 +41,9 @@ export class AddCourseComponent implements OnInit {
     });
   }
 
+  onSubmit()
+ {
+   
+ }
+
 }

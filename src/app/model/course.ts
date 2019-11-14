@@ -5,7 +5,6 @@ export interface Course {
     categories: string[];
     description: string;
     imageURL: string;
-    testChange: boolean;
 }
 
 
