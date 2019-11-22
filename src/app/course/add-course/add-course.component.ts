@@ -43,9 +43,11 @@ export class AddCourseComponent implements OnInit {
   }
 
   onSubmit()
+
   {
-    this.courseDataService.addCourseToDatabase(this.mainForm.value);
+    this.courseDataService.addCourse(this.mainForm.value);
     
   }
+
 
 }

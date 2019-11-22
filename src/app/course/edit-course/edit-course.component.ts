@@ -18,6 +18,7 @@ export class EditCourseComponent implements OnInit {
   mainForm: FormGroup;
   closeResult: string;
   activeModal: NgbActiveModal;
+  newCourse : boolean;
 
 
   get categories() {
@@ -28,16 +29,18 @@ export class EditCourseComponent implements OnInit {
   }
 
 
-
-
   addCategory() {
     this.categories.push(this.fb.control(''));
   }
 
- 
-
 
   ngOnInit() {
+    console.log('init', this.course);
+
+    if (this.course == null){
+    this.course = { id:'', name: '', price: 0, description: '', categories: [], imageURL: ''}
+    this.newCourse = true;
+    }
 
     this.mainForm = this.fb.group({
       name: [this.course.name],
@@ -47,6 +50,7 @@ export class EditCourseComponent implements OnInit {
       imageURL: [this.course.imageURL]
     });
   }
+
 
   // this is a hook - when coruse which is an input to the component changes
   // this will be called.
@@ -58,12 +62,12 @@ export class EditCourseComponent implements OnInit {
     if (this.mainForm) {
       this.mainForm.patchValue({
 
-        name: this.course.name, 
+        name: this.course.name,
         price: this.course.price,
         description: this.course.description,
       });
 
-     // this.swapInterestValues(this.course.interests);
+      // this.swapInterestValues(this.course.interests);
 
     }
   }

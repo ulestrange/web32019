@@ -54,16 +54,32 @@ export class CourseListComponent implements OnInit {
   }
 
   // open the modal form, the form itself is a component
-  open() {
+  openEdit() {
     const modalRef = this.modalService.open(EditCourseComponent);
-    console.log( this.currentCourse);
+
     modalRef.componentInstance.course = this.currentCourse;
 
     modalRef.result.then(
       (result) => {
         console.log(' upating ', this.currentCourse.id);
         this.courseDataService.updateCourse(this.currentCourse.id  , result);
-        this.closeResult = `Closed with: success`;
+        this.closeResult = `Course Updated`;
+      },
+      (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+  }
+
+  openNew() {
+    const modalRef = this.modalService.open(EditCourseComponent);
+
+    modalRef.componentInstance.course = null;
+
+    modalRef.result.then(
+      (result) => {
+        console.log(' adding ', this.currentCourse.id);
+        this.courseDataService.addCourse(result);
+        this.closeResult = `Course Added`;
       },
       (reason) => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
