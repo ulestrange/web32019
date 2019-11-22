@@ -18,6 +18,13 @@ import { LoginComponent } from './core/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RegisterComponent } from './core/register/register.component';
 import { environment } from 'src/environments/environment';
+import { CourseListComponent } from './course/course-list/course-list.component';
+import { CourseRowComponent } from './course/course-row/course-row.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { CourseDetailsComponent } from './course/course-details/course-details.component';
+import { EditCourseComponent } from './course/edit-course/edit-course.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddCourseComponent } from './course/add-course/add-course.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +36,13 @@ import { environment } from 'src/environments/environment';
     HomeComponent,
      NotFoundComponent,
      LoginComponent,
-     RegisterComponent
+     RegisterComponent,
+     CourseListComponent,
+     CourseRowComponent,
+     CourseDetailsComponent,
+     EditCourseComponent,
+     AddCourseComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -37,9 +50,12 @@ import { environment } from 'src/environments/environment';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ EditCourseComponent ]  // needed because the component is not included in a template
 })
 export class AppModule { }
