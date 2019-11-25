@@ -24,12 +24,10 @@ export class CourseDataService {
   }
 
   getCourses(): Observable<Course[]> {
-   
     this.courses =
       this.courseCollection.snapshotChanges().pipe(
         map(actions => {
           return (actions.map(a => {
-          
             return ({ id: a.payload.doc.id, ...a.payload.doc.data() } as Course)
           }
           ))
@@ -41,11 +39,12 @@ export class CourseDataService {
 
 
   addCourse(course: Course) {
-    this.courseCollection.add({ ...course });
+    console.log('adding', course);
+    this.courseCollection.add(course);
   }
 
   updateCourse(id: string, course: Course) {
-    console.log("changing ", course);
+    console.log('changing ', course);
     this.courseDoc = this.afs.doc<Course>('courses/' + id);
     this.courseDoc.update(course);
   }

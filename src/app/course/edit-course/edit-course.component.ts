@@ -38,7 +38,7 @@ export class EditCourseComponent implements OnInit {
     console.log('init', this.course);
 
     if (this.course == null){
-    this.course = { id:'', name: '', price: 0, description: '', categories: [], imageURL: ''}
+    this.course = { id: '', name: '', price: 0, description: '', categories: [], imageURL: ''}
     this.newCourse = true;
     }
 
