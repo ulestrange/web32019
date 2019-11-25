@@ -14,12 +14,12 @@ export class AddCourseComponent implements OnInit {
 
   mainForm: FormGroup;
 
- 
+
  get categories() {
     return this.mainForm.get('categories') as FormArray;
   }
   constructor(private fb: FormBuilder, private courseDataService: CourseDataService) {
-    
+
   }
 
 
@@ -46,8 +46,8 @@ export class AddCourseComponent implements OnInit {
 
   {
     this.courseDataService.addCourse(this.mainForm.value);
-    
   }
+
 
 
 }
